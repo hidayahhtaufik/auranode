@@ -10,7 +10,7 @@ title: Dawn Validator
 - ID Telegram
 - Ip Proxy (Optional)
 
-**LINUX/VPS**
+**Ubuntu-Linux**
 
 ```
 bash <(curl -s https://file.winsnip.xyz/file/uploads/DawnBot.sh)
