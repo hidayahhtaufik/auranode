@@ -124,7 +124,7 @@ LimitNOFILE=4096
 [Install]
 WantedBy=multi-user.target
 EOF
-``
+```
 
 8. **Restart Story Service**:
 ```
