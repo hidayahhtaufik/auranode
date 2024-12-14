@@ -99,7 +99,7 @@ rm -f Story_snapshot.lz4
 aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/story-latest.tar.lz4
 ```
 
-or
+7.1 **can use below too**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
@@ -113,7 +113,7 @@ rm -f Story_snapshot.lz4
 aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/Geth_snapshot.tar.lz4
 ```
 
-or
+8.1 **can use below too**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
@@ -128,7 +128,7 @@ cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/priv_validator
 10. **Decompress Story snapshot**:
 ```
 sudo mkdir -p $HOME/.story/story/data
-lz4 -d -c story-latest.tar.lz4 | pv | sudo tar xv -C $HOME/.story/story/ > /dev/null
+lz4 -d -c Story_snapshot.lz4 | pv | sudo tar xv -C $HOME/.story/story/ > /dev/null
 ```
 
 11. **Decompress Story-Geth snapshot**: 
