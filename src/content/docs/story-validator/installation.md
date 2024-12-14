@@ -23,7 +23,7 @@ sudo apt install curl git make jq build-essential gcc unzip wget lz4 aria2 -y
 2. **Download Story-Geth binary v0.11.0**: 
 ```
 cd $HOME
-wget https://github.com/piplabs/story-geth/releases/download/v0.10.1/geth-linux-amd64
+wget https://github.com/piplabs/story-geth/releases/download/v0.11.0/geth-linux-amd64
 [ ! -d "$HOME/go/bin" ] && mkdir -p $HOME/go/bin
 if ! grep -q "$HOME/go/bin" $HOME/.bash_profile; then
   echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
