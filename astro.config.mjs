@@ -36,7 +36,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Story Validator',
+					label: 'Story Validator', //
 					items: [
 						{ label: 'Installation', slug: 'story-validator/installation' },
 						{ label: 'Upgrade', slug: 'story-validator/upgrade' },
