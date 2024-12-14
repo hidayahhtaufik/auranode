@@ -27,7 +27,6 @@ export default defineConfig({
 					items: [
 						{ label: 'PWR Validator', slug: 'node-tutorial/pwr-validator' },
 						{ label: 'Zenrock Validator', slug: 'node-tutorial/zenrock-validator' },
-						{ label: 'Story Validator', slug: 'node-tutorial/story-validator' },
 						{ label: 'Ritual Node', slug: 'node-tutorial/ritual-node' },
 						{ label: 'Cysic Node', slug: 'node-tutorial/cysic-node' },
 						{ label: 'Glacier Node', slug: 'node-tutorial/glacier-node' },
@@ -36,7 +35,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Story Validator', //
+					label: 'Story Validator',
 					items: [
 						{ label: 'Installation', slug: 'story-validator/installation' },
 						{ label: 'Upgrade', slug: 'story-validator/upgrade' },
