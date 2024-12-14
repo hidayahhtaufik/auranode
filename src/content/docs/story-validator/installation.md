@@ -17,7 +17,7 @@ This guide walks you through setting up a Story Validator on the Oddysey Network
 ```
 sudo apt update
 sudo apt-get update
-sudo apt install curl git make jq build-essential gcc unzip wget lz4 aria2 -y
+sudo apt install curl git make jq build-essential gcc unzip wget pv lz4 aria2 -y
 ```
 
 2. **Download Story-Geth binary v0.11.0**: 
