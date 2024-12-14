@@ -99,7 +99,7 @@ rm -f Story_snapshot.lz4
 aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/story-latest.tar.lz4
 ```
 
-7.1 **can use below too**:
+**can use below too**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
@@ -113,7 +113,7 @@ rm -f Story_snapshot.lz4
 aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/Geth_snapshot.tar.lz4
 ```
 
-8.1 **can use below too**:
+**can use below too**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
