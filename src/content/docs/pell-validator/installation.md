@@ -3,7 +3,7 @@ title: Pell Validator
 description: Setting Up a Pell Validator on the Ignite_186 Network with a VPS
 ---
 
-This guide walks you through setting up a Story Validator on the Ignite Network using a Virtual Private Server (VPS).
+This guide walks you through setting up a Pell Validator on the Ignite_186 Network using a Virtual Private Server (VPS).
 
 ## System Requirements
 
