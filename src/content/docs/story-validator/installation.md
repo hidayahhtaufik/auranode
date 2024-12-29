@@ -11,6 +11,14 @@ This guide walks you through setting up a Story Validator on the Oddysey Network
 - **CPU**: 4 cores
 - **Disk Space**: 500 GB
 
+# Auto Install
+
+```
+wget https://raw.githubusercontent.com/hidayahhtaufik/Testnet-Guides/master/Story%20Protocol/auto-install.sh
+chmod +x auto-install.sh
+./auto-install.sh
+```
+
 # Manual Install
 
 1. **Install Dependencies**: 

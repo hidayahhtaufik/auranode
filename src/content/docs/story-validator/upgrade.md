@@ -5,7 +5,14 @@ description: Upgrade Story-Geth v0.11.0
 
 This guide walks you through upgrade Story-Geth v0.11.0
 
-# Manual Install
+# Auto Upgrade
+```
+wget https://github.com/hidayahhtaufik/Testnet-Guides/blob/master/Story%20Protocol/update.sh
+chmod +x update.sh
+./update.sh
+```
+
+# Manual Upgrade
 
 1. **Stop Service Story-Geth**: 
 ```

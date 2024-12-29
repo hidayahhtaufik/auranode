@@ -44,6 +44,13 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Pell Validator',
+					items: [
+						{ label: 'Installation', slug: 'pell-validator/installation' },
+						{ label: 'Cheatsheet', slug: 'pell-validator/cheatseet' },
+					],
+				},
+				{
 					label: 'Building Website',
 					items: [
 						// Each item here is one entry in the navigation menu.
