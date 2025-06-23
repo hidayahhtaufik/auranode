@@ -7,9 +7,10 @@ This guide walks you through setting up a Story Validator on the Oddysey Network
 
 ## System Requirements
 
-- **RAM**: 16 GB
-- **CPU**: 4 cores
-- **Disk Space**: 500 GB
+- **RAM**: 32 GB
+- **CPU**: 8 cores
+- **Disk Space**: 500 NVMe Drive
+- **Bandwith**: 25 MBit/s
 
 # Auto Install
 
@@ -28,25 +29,36 @@ sudo apt-get update
 sudo apt install curl git make jq build-essential gcc unzip wget pv lz4 aria2 -y
 ```
 
-2. **Download Story-Geth binary v0.11.0**: 
+2. **Install GO (Skip if you already installed)**: 
+```
+cd $HOME && \
+ver="1.22.0" && \
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
+sudo rm -rf /usr/local/go && \
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
+rm "go$ver.linux-amd64.tar.gz" && \
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile && \
+source ~/.bash_profile && \
+go version
+```
+
+3. **Download Story-Geth binary v1.1.0**: 
 ```
 cd $HOME
-wget https://github.com/piplabs/story-geth/releases/download/v0.11.0/geth-linux-amd64
-[ ! -d "$HOME/go/bin" ] && mkdir -p $HOME/go/bin
-if ! grep -q "$HOME/go/bin" $HOME/.bash_profile; then
-  echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
-fi
-chmod +x geth-linux-amd64
-mv $HOME/geth-linux-amd64 $HOME/go/bin/story-geth
+git clone https://github.com/piplabs/story-geth
+cd story-geth
+git checkout v1.1.0
+make geth
+cp build/bin/geth $HOME/go/bin/story-geth
 source $HOME/.bash_profile
 story-geth version
 ```
 
-3. **Download Story binary v0.13.0**: 
+4. **Download Story binary v1.3.0**: 
 ```
 cd $HOME
 rm -rf story-linux-amd64
-wget https://github.com/piplabs/story/releases/download/v0.13.0/story-linux-amd64
+wget https://github.com/piplabs/story/releases/download/v1.3.0/story-linux-amd64
 [ ! -d "$HOME/go/bin" ] && mkdir -p $HOME/go/bin
 if ! grep -q "$HOME/go/bin" $HOME/.bash_profile; then
   echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
@@ -57,12 +69,12 @@ source $HOME/.bash_profile
 story version
 ```
 
-4. **Init Odyssey node**: 
+5. **Init Odyssey node**: 
 ```
-story init --network odyssey --moniker "Your_moniker_name"
+story init --network aeneid --moniker "Your_moniker_name"
 ```
 
-5. **Create Story-Geth service file**: 
+6. **Create Story-Geth service file**: 
 ```
 sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
 [Unit]
@@ -71,7 +83,7 @@ After=network.target
 
 [Service]
 User=root
-ExecStart=/root/go/bin/story-geth --odyssey --syncmode full
+ExecStart=/root/go/bin/story-geth --aeneid --syncmode full
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
@@ -81,7 +93,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-6. **Create Story Service file**: 
+7. **Create Story Service file**: 
 ```
 sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
 [Unit]
@@ -100,57 +112,43 @@ WantedBy=multi-user.target
 EOF
 ```
 
-7. **Download Story Snapshot**: 
+8. **Download Story Snapshot**: 
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/story-latest.tar.lz4
+aria2c -x 16 -s 16 -k 1M https://story-aeneid-snapshot.auranode.xyz/story_2025-06-23_5866648_snap.tar.lz4 -o snapshot.tar.lz4 -o Story_snapshot.lz4
 ```
 
-**can use below too**:
+9. **Download Story-Geth Snapshot**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M https://story.josephtran.co/Story_snapshot.lz4
+aria2c -x 16 -s 16 -k 1M https://story-geth-aeneid-snapshot.auranode.xyz/geth_story_2025-06-23_5866648_snap.tar.lz4 -o Geth_snapshot.lz4
 ```
 
-8. **Download Story-Geth Snapshot**:
-```
-cd $HOME
-rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M http://filex.auranode.xyz/snapshot/story/Geth_snapshot.tar.lz4
-```
-
-**can use below too**:
-```
-cd $HOME
-rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M https://story.josephtran.co/Geth_snapshot.lz4
-```
-
-9. **Backup priv_validator_state.json**:
+10. **Backup priv_validator_state.json**:
 ```
 cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/priv_validator_state.json.backup
 ```
 
-10. **Decompress Story snapshot**:
+11. **Decompress Story snapshot**:
 ```
 sudo mkdir -p $HOME/.story/story/data
 lz4 -d -c Story_snapshot.lz4 | pv | sudo tar xv -C $HOME/.story/story/ > /dev/null
 ```
 
-11. **Decompress Story-Geth snapshot**: 
+12. **Decompress Story-Geth snapshot**: 
 ```
 sudo mkdir -p $HOME/.story/geth/odyssey/geth/chaindata
 lz4 -d -c Geth_snapshot.lz4 | pv | sudo tar xv -C $HOME/.story/geth/odyssey/geth/ > /dev/null
 ```
 
-12. **Restore priv_validator_state.json**:
+13. **Restore priv_validator_state.json**:
 ```
 cp $HOME/.story/priv_validator_state.json.backup $HOME/.story/story/data/priv_validator_state.json
 ```
 
-13. **Reload and start story-geth**: 
+14. **Reload and start story-geth**: 
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl start story-geth && \
@@ -158,7 +156,7 @@ sudo systemctl enable story-geth && \
 sudo systemctl status story-geth
 ```
 
-14. **Reload and start story**: 
+15. **Reload and start story**: 
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl start story && \
@@ -166,22 +164,22 @@ sudo systemctl enable story && \
 sudo systemctl status story
 ```
 
-15. **Check logs story-geth**: 
+16. **Check logs story-geth**: 
 ```
 sudo journalctl -u story-geth -f -o cat
 ```
 
-16. **Check logs story**: 
+17. **Check logs story**: 
 ```
 sudo journalctl -u story -f -o cat
 ```
 
-17. **Check sync status**: 
+18. **Check sync status**: 
 ```
 curl localhost:26657/status | jq
 ```
 
-18. **Check block sync left:**: 
+19. **Check block sync left:**: 
 ```
 while true; do
     local_height=$(curl -s localhost:26657/status | jq -r '.result.sync_info.latest_block_height');
@@ -192,7 +190,7 @@ while true; do
 done
 ``` 
 
-19. **Export Validator:**:
+20. **Export Validator:**:
 ```
 story validator export
 ```
@@ -201,25 +199,22 @@ story validator export
 story validator export --export-evm-key
 ```
 
-20. **Create Validator:**:
+21. **Create Validator:**:
 ```
-story validator create --stake 1024000000000000000000 --private-key "your_private_key" --moniker "your_moniker_name"
-```
-
-21. **Validator Staking:**:
-```
-story validator stake \
-   --validator-pubkey "VALIDATOR_PUB_KEY_IN_HEX" \
-   --stake 1024000000000000000000 \
-   --private-key xxxxxxxxxxxxxx
+story validator create --stake 1024000000000000000000 --private-key "your-evm-priv-key" --moniker "your-moniker-name" --rpc "https://aeneid.storyrpc.io" --chain-id 1315
 ```
 
-22. **Check your Validator on Explorer:**:
+22. **Validator Staking:**:
+```
+story validator create --stake 1024000000000000000000 --moniker "your-moniker-name" --chain-id 1315 --unlocked=false --private-key "your-evm-priv-key"
+```
+
+23. **Check your Validator on Explorer:**:
 ```
 curl -s localhost:26657/status | jq -r '.result.validator_info'
 ```
 
-23. **Delete Node:**:
+24. **Delete Node:**:
 ```
 sudo systemctl stop story-geth
 sudo systemctl stop story
@@ -232,6 +227,3 @@ sudo rm -rf $HOME/.story
 sudo rm $HOME/go/bin/story-geth
 sudo rm $HOME/go/bin/story
 ```
-
-#### **Story Validator**:
-**[My Validator](https://testnet.storyscan.app/validators/storyvaloper19x42aqxn7ljsd6jm4492gz5c3n6na88vaxmtgj)**
