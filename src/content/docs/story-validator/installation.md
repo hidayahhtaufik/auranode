@@ -1,9 +1,9 @@
 ---
 title: Story Validator
-description: Setting Up a Story Validator on the Oddysey Network with a VPS
+description: Setting Up a Story Validator on the Aeneid Network with a VPS
 ---
 
-This guide walks you through setting up a Story Validator on the Oddysey Network using a Virtual Private Server (VPS).
+This guide walks you through setting up a Story Validator on the Aeneid Network using a Virtual Private Server (VPS).
 
 ## System Requirements
 
