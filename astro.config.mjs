@@ -37,6 +37,7 @@ export default defineConfig({
 				{
 					label: 'Story Validator',
 					items: [
+						{ label: 'Service', slug: 'story-validator/service' },
 						{ label: 'Installation', slug: 'story-validator/installation' },
 						{ label: 'Upgrade', slug: 'story-validator/upgrade' },
 						{ label: 'Cosmovisor', slug: 'story-validator/cosmovisor' },
