@@ -41,8 +41,8 @@ export default defineConfig({
 						{ label: 'Installation', slug: 'story-validator/installation' },
 						{ label: 'Upgrade', slug: 'story-validator/upgrade' },
 						{ label: 'Cosmovisor', slug: 'story-validator/cosmovisor' },
-						{ label: 'Cheatsheet', slug: 'story-validator/cheatseet' },
 						{ label: 'Service', slug: 'story-validator/service' }, // tambah ini
+						// { label: 'Cheatsheet', slug: 'story-validator/cheatseet' },
 					],
 				},
 				{
