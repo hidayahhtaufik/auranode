@@ -116,14 +116,14 @@ EOF
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M https://story-aeneid-snapshot.auranode.xyz/story_2025-06-23_5866648_snap.tar.lz4 -o snapshot.tar.lz4 -o Story_snapshot.lz4
+aria2c -x 16 -s 16 -k 1M https://story-aeneid-snapshot.auranode.xyz/Story_snapshot.tar.lz4 -o snapshot.tar.lz4 -o Story_snapshot.lz4
 ```
 
 9. **Download Story-Geth Snapshot**:
 ```
 cd $HOME
 rm -f Story_snapshot.lz4
-aria2c -x 16 -s 16 -k 1M https://story-geth-aeneid-snapshot.auranode.xyz/geth_story_2025-06-23_5866648_snap.tar.lz4 -o Geth_snapshot.lz4
+aria2c -x 16 -s 16 -k 1M https://story-geth-aeneid-snapshot.auranode.xyz/Geth_snapshot.tar.lz4 -o Geth_snapshot.lz4
 ```
 
 10. **Backup priv_validator_state.json**:

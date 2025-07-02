@@ -26,6 +26,21 @@ Proud to support the network with a complete suite of services:
 - **Faucet**  
   💧 [`https://faucet.auranode.xyz/`](https://faucet.auranode.xyz/)
 
+- **Seed Node** 
+  📡 [`95a5d069b6b7778ccde6b8dc0ed7727cf9823729@story-aeneid-p2p.auranode.xyz:26656`](95a5d069b6b7778ccde6b8dc0ed7727cf9823729@story-aeneid-p2p.auranode.xyz:26656)
+
+- **Persistent Peer**  
+  🔗 [`95a5d069b6b7778ccde6b8dc0ed7727cf9823729@story-aeneid-p2p.auranode.xyz:26656`](95a5d069b6b7778ccde6b8dc0ed7727cf9823729@story-aeneid-p2p.auranode.xyz:26656)
+
+- **Genesis File**  
+  🧬 [`https://story-aeneid-genesis.auranode.xyz/genesis.json`](https://story-aeneid-genesis.auranode.xyz/genesis.json)
+
+- **Addrbook**  
+  📚 [`https://story-aeneid-peers.auranode.xyz/addrbook.json`](https://story-aeneid-peers.auranode.xyz/addrbook.json)
+
+- **Peer List**  
+  👥 [`https://story-aeneid-peers.auranode.xyz/peers.txt`](https://story-aeneid-peers.auranode.xyz/peers.txt)
+  
 ---
 
 ## Snapshots 📦  
@@ -41,3 +56,4 @@ Proud to support the network with a complete suite of services:
 
 ## Installation Guide 📘  
 [`https://auranode.xyz/story-validator/installation`](https://auranode.xyz/story-validator/installation)
+
