@@ -28,3 +28,33 @@ story-geth version
 sudo systemctl restart story-geth
 sudo journalctl -u story-geth -f -o cat
 ```
+
+This guide walks you through upgrade Story v1.3.0
+
+# Manual Upgrade
+
+1. **Stop Service Story**: 
+```
+sudo systemctl stop story
+```
+
+2. **Download Story binary**: 
+```
+cd $HOME
+rm -rf story-linux-amd64
+wget https://github.com/piplabs/story/releases/download/v1.3.0/story-linux-amd64
+[ ! -d "$HOME/go/bin" ] && mkdir -p $HOME/go/bin
+if ! grep -q "$HOME/go/bin" $HOME/.bash_profile; then
+  echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
+fi
+chmod +x story-linux-amd64
+sudo cp $HOME/story-linux-amd64 $HOME/go/bin/story
+source $HOME/.bash_profile
+story version
+```
+
+3. **Restart Story Service**: 
+```
+sudo systemctl restart story
+sudo journalctl -u story -f -o cat
+```

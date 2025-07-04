@@ -15,7 +15,7 @@ This guide walks you through setting up a Story Validator on the Aeneid Network 
 # Auto Install
 
 ```
-wget https://raw.githubusercontent.com/hidayahhtaufik/Testnet-Guides/master/Story%20Protocol/auto-install.sh
+wget https://raw.githubusercontent.com/hidayahhtaufik/Testnet-Guides/master/Story/auto-install.sh
 chmod +x auto-install.sh
 ./auto-install.sh
 ```
